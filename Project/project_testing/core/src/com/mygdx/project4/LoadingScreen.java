@@ -4,11 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class LoadingScreen implements Screen {
+    SpriteBatch batch;
+    BitmapFont font;
     ShapeRenderer shapeRenderer;
     OrthographicCamera camera;
     Viewport viewport;
@@ -24,6 +29,11 @@ public class LoadingScreen implements Screen {
     public void show() {
         shapeRenderer = new ShapeRenderer();
         camera = new OrthographicCamera();
+        batch = new SpriteBatch();
+        font = new BitmapFont();
+
+        font.getData().setScale(3);
+        font.getRegion().getTexture().setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
     }
 
     /**
@@ -42,13 +52,13 @@ public class LoadingScreen implements Screen {
         viewport = new FitViewport(WORLD_WIDTH,WORLD_HEIGHT,camera);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-
-
         man.draw(shapeRenderer);
-
-
         shapeRenderer.end();
         man.move(delta*20,delta*10);
+
+        batch.begin();
+        font.draw(batch,"Fuck you java", 100,100);
+        batch.end();
 
     }
 
@@ -96,6 +106,7 @@ public class LoadingScreen implements Screen {
     @Override
     public void dispose() {
         shapeRenderer.dispose();
-
+        font.dispose();
+        batch.dispose();
     }
 }
