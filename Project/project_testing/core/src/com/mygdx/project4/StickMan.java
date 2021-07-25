@@ -33,6 +33,40 @@ public class StickMan {
                 body[3],
                 body[4]
         );
+        render.rectLine(
+                lfeet[0],
+                lfeet[1],
+                lfeet[2],
+                lfeet[3],
+                lfeet[4]
+        );
+        render.rectLine(
+                rfeet[0],
+                rfeet[1],
+                rfeet[2],
+                rfeet[3],
+                rfeet[4]
+        );
+        render.rectLine(
+                lhand[0],
+                lhand[1],
+                lhand[2],
+                lhand[3],
+                lhand[4]
+        );
+        render.rectLine(
+                rhand[0],
+                rhand[1],
+                rhand[2],
+                rhand[3],
+                rhand[4]
+        );
+
+        render.circle(
+                head[0],
+                head[1],
+                head[2]
+        );
 
     }
 
@@ -50,9 +84,48 @@ public class StickMan {
         body[4]=10; //thick
 
         lfeet[0] = xcpos; //xstart
-        lfeet[1] = body[1]; //ystart
+        lfeet[1] = body[1]+5; //ystart
         lfeet[2] = xcpos - 50; //xend
-        //lfeet[3] = lfeet[1] -  //xend
+        lfeet[3] = lfeet[1] - 100; //yend
+        lfeet[4] = 10; //thick
+
+        rfeet[0] = xcpos; //xstart
+        rfeet[1] = body[1]+5; //ystart
+        rfeet[2] = xcpos + 50; //xend
+        rfeet[3] = rfeet[1] - 100; //yend
+        rfeet[4] = 10; //thick
+
+        lhand[0] = xcpos; //xstart
+        lhand[1] = body[3]-55; //ystart
+        lhand[2] = xcpos - 50; //xend
+        lhand[3] = lhand[1] + 50; //yend
+        lhand[4] = 10; //thick
+
+        rhand[0] = xcpos; //xstart
+        rhand[1] = body[3]-55; //ystart
+        rhand[2] = xcpos + 50; //xend
+        rhand[3] = rhand[1] + 50; //yend
+        rhand[4] = 10; //thick
+
+        head[0] = xcpos;
+        head[1] = body[3] + 40;
+        head[2] = 40;
+        // shapeRenderer.rectLine(80,80,130,180, 10);
+    }
+
+    public void move(float x, float y){
+        xcpos += x;
+        ycpos += y;
+        update();
     }
 
 }
+
+
+//stick figure old code
+//        shapeRenderer.rectLine(80,80,130,180, 10);
+//        shapeRenderer.rectLine(180,80, 130,180,10);
+//        shapeRenderer.rectLine(130,180, 130,300,10);
+//        shapeRenderer.rectLine(130,220, 80,260,10);
+//        shapeRenderer.rectLine(130,220, 190,260,10);
+//        shapeRenderer.circle(130,300,40);

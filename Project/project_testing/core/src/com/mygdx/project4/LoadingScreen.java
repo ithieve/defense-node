@@ -45,14 +45,10 @@ public class LoadingScreen implements Screen {
 
 
         man.draw(shapeRenderer);
-//        shapeRenderer.rectLine(80,80,130,180, 10);
-//        shapeRenderer.rectLine(180,80, 130,180,10);
-//        shapeRenderer.rectLine(130,180, 130,300,10);
-//        shapeRenderer.rectLine(130,220, 80,260,10);
-//        shapeRenderer.rectLine(130,220, 190,260,10);
-//        shapeRenderer.circle(130,300,40);
+
 
         shapeRenderer.end();
+        man.move(delta*20,delta*10);
 
     }
 
