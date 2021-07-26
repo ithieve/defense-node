@@ -1,24 +1,33 @@
 package com.mygdx.project4;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 
 public class maingame extends Game {
 
-
-	LoadingScreen loadingScreen;
+	Screen currentScreen;
+	Screen mainMenuScreen;
+	ScreenAdapter InputTest;
+	TestWindow testWindow;
+	InputTest inputTest;
 	@Override
 	public void create() {
-		loadingScreen = new LoadingScreen();
-		setScreen(loadingScreen);
+		testWindow = new TestWindow();
+		inputTest = new InputTest();
+
+
+		currentScreen = inputTest;
+		setScreen(currentScreen);
 		Gdx.app.setLogLevel(0);
 	}
 
 	@Override
 	public void dispose() {
 		super.dispose();
-		loadingScreen.dispose();
+		testWindow.dispose();
+		inputTest.dispose();;
 	}
 
 	@Override
@@ -28,6 +37,7 @@ public class maingame extends Game {
 
 	@Override
 	public void resize(int width, int height) {
-		loadingScreen.resize(width, height);
+		Gdx.app.log("MainGame","Resize to " + width + " x " +height);
+		currentScreen.resize(width, height);
 	}
 }
