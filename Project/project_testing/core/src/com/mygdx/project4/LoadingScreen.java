@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -58,6 +59,16 @@ public class LoadingScreen implements Screen {
 
         batch.begin();
         font.draw(batch,"Fuck you java", 100,100);
+        font.getData().setScale(1f);
+        font.draw(
+                batch,
+                "FPS = " + Gdx.graphics.getFramesPerSecond(),
+                Gdx.graphics.getWidth() * 0.1f,
+                Gdx.graphics.getHeight() *0.9f,
+                0,
+                Align.left,
+                false);
+
         batch.end();
 
     }

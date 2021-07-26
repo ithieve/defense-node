@@ -2,6 +2,7 @@ package com.mygdx.project4;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 
 public class maingame extends Game {
 
@@ -11,6 +12,7 @@ public class maingame extends Game {
 	public void create() {
 		loadingScreen = new LoadingScreen();
 		setScreen(loadingScreen);
+		Gdx.app.setLogLevel(0);
 	}
 
 	@Override
