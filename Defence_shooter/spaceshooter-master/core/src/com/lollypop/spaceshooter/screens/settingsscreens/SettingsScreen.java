@@ -115,45 +115,45 @@ public class SettingsScreen implements Screen {
             }
         });
 
-        globalScoreBoarBtn = new TextButton(Strings.scoreboardL, skin);
-        globalScoreBoarBtn.getLabel().setFontScale(SCALE_FACTOR);
-        globalScoreBoarBtn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                batch.dispose();
-                game.setScreen(new GlobalScoreBoardScreen(game, scrollingBackground));
-            }
-        });
-
-        changeIpBtn = new TextButton(Strings.changeIpL, skin);
-        changeIpBtn.getLabel().setFontScale(SCALE_FACTOR / 1.5f);
-        changeIpBtn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                final TextInputDialog textInputDialog = new TextInputDialog(skin, stage, Strings.enterIp, 0.7f, 300, 200);
-                textInputDialog.setPosition(GENERAL_WIDTH / 2 - textInputDialog.getPrefWidth() / 2, (GENERAL_HEIGHT - textInputDialog.getPrefHeight()) / 2 + 40 * SCALE_Y);
-
-                textInputDialog.getActBtn().addListener(new InputListener() {
-                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                        if (textInputDialog.getTextField().getText().length() == 0) {
-                            apiAddressErr(stage, Strings.errEmptyIp);
-                            error.show(stage);
-                        }  else if (!checkIp(textInputDialog.getTextField().getText())) {
-                            apiAddressErr(stage, Strings.errIllegalIp);
-                            error.show(stage);
-                        } else { // All - ok
-                            Preferences prefs = Gdx.app.getPreferences("spacegame");
-                            prefs.putString("apiAddress", textInputDialog.getTextField().getText());
-                            prefs.flush();
-                            Gdx.input.setOnscreenKeyboardVisible(false);
-                            textInputDialog.hide();
-                        }
-                        return true;
-                    }
-                });
-                textInputDialog.show(stage);
-            }
-        });
+//        globalScoreBoarBtn = new TextButton(Strings.scoreboardL, skin);
+//        globalScoreBoarBtn.getLabel().setFontScale(SCALE_FACTOR);
+//        globalScoreBoarBtn.addListener(new ClickListener() {
+//            @Override
+//            public void clicked(InputEvent event, float x, float y) {
+//                batch.dispose();
+//                game.setScreen(new GlobalScoreBoardScreen(game, scrollingBackground));
+//            }
+//        });
+//
+//        changeIpBtn = new TextButton(Strings.changeIpL, skin);
+//        changeIpBtn.getLabel().setFontScale(SCALE_FACTOR / 1.5f);
+//        changeIpBtn.addListener(new ClickListener() {
+//            @Override
+//            public void clicked(InputEvent event, float x, float y) {
+//                final TextInputDialog textInputDialog = new TextInputDialog(skin, stage, Strings.enterIp, 0.7f, 300, 200);
+//                textInputDialog.setPosition(GENERAL_WIDTH / 2 - textInputDialog.getPrefWidth() / 2, (GENERAL_HEIGHT - textInputDialog.getPrefHeight()) / 2 + 40 * SCALE_Y);
+//
+//                textInputDialog.getActBtn().addListener(new InputListener() {
+//                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+//                        if (textInputDialog.getTextField().getText().length() == 0) {
+//                            apiAddressErr(stage, Strings.errEmptyIp);
+//                            error.show(stage);
+//                        }  else if (!checkIp(textInputDialog.getTextField().getText())) {
+//                            apiAddressErr(stage, Strings.errIllegalIp);
+//                            error.show(stage);
+//                        } else { // All - ok
+//                            Preferences prefs = Gdx.app.getPreferences("spacegame");
+//                            prefs.putString("apiAddress", textInputDialog.getTextField().getText());
+//                            prefs.flush();
+//                            Gdx.input.setOnscreenKeyboardVisible(false);
+//                            textInputDialog.hide();
+//                        }
+//                        return true;
+//                    }
+//                });
+//                textInputDialog.show(stage);
+//            }
+//        });
 
         Preferences data = Gdx.app.getPreferences("spacegame");
         checkBox = new CheckBox(skin, Strings.sendScoreTxt, Assets.checkBoxImageUp, Assets.checkBoxImageDown, 32, 32);
@@ -186,17 +186,17 @@ public class SettingsScreen implements Screen {
             }
         });
 
-        buttonsTable.add(globalScoreBoarBtn).padBottom(22 * SCALE_FACTOR);
-        buttonsTable.row();
-        buttonsTable.add(changeIpBtn).padBottom(36 * SCALE_FACTOR);
-        buttonsTable.row();
+//        buttonsTable.add(globalScoreBoarBtn).padBottom(22 * SCALE_FACTOR);
+  //      buttonsTable.row();
+    //    buttonsTable.add(changeIpBtn).padBottom(36 * SCALE_FACTOR);
+   //     buttonsTable.row();
         buttonsTable.add(statsBtn).padBottom(36 * SCALE_FACTOR);
         buttonsTable.row();
         buttonsTable.add(aboutBtn).padBottom(36 * SCALE_FACTOR);
         buttonsTable.row();
         buttonsTable.add(resetProgressBtn).padBottom(36 * SCALE_FACTOR);
         buttonsTable.row();
-        buttonsTable.add(checkBox).padBottom(119 * SCALE_FACTOR);
+ //       buttonsTable.add(checkBox).padBottom(119 * SCALE_FACTOR);
         buttonsTable.row();
         buttonsTable.add(backBtn);
 
