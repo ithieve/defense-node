@@ -1,0 +1,51 @@
+package com.mygdx.project4;
+
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
+
+public class maingame extends Game {
+
+	Screen currentScreen;
+	Screen mainMenuScreen;
+	ScreenAdapter InputTest;
+	TestWindow testWindow;
+	InputTest inputTest;
+	MouseClickScreen mouseClickScreen;
+	MouseClickScreen2 mouseClickScreen2;
+	@Override
+	public void create() {
+		testWindow = new TestWindow();
+		inputTest = new InputTest();
+		mouseClickScreen2 = new MouseClickScreen2();
+
+
+		currentScreen = mouseClickScreen2;
+		setScreen(currentScreen);
+		Gdx.app.setLogLevel(0);
+	}
+
+	public void changeScreen(Screen screen){
+		this.setScreen(screen);
+
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+		testWindow.dispose();
+		inputTest.dispose();;
+	}
+
+	@Override
+	public void render() {
+		super.render();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		Gdx.app.log("MainGame","Resize to " + width + " x " +height);
+		currentScreen.resize(width, height);
+	}
+}
